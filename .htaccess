@@ -1,0 +1,13 @@
+# Переадресация index.html на заглавную
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ https://anton240496.github.io [R=301,L]
+
+# Скрытие расширений .html
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+# Кастомная страница 404
+ErrorDocument 404 /404.html
